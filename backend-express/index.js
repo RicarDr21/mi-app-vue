@@ -1,8 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('¡Hola Mundo desde Express!');
+app.use(cors());
+
+app.get('/api/mensaje', (req, res) => {
+  res.json({ mensaje: 'Hola Mundo' });
 });
 
 app.listen(3000, () => {

@@ -1,6 +1,17 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref, onMounted } from 'vue'
+
+const mensaje = ref('Cargando...')
+
+onMounted(async () => {
+  try {
+    const respuesta = await fetch('http://localhost:3000/api/mensaje')
+    const datos = await respuesta.json()
+    mensaje.value = datos.mensaje
+  } catch (error) {
+    mensaje.value = 'Error al conectar con el backend'
+  }
+})
 </script>
 
 <template>
@@ -8,18 +19,16 @@ import TheWelcome from './components/TheWelcome.vue'
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="Hola Mundo" />
+      <h1>{{ mensaje }}</h1>
     </div>
   </header>
-
-  <main>
-    <TheWelcome />
-  </main>
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
+  text-align: center;
+  padding-top: 2rem;
 }
 
 .logo {
@@ -27,21 +36,8 @@ header {
   margin: 0 auto 2rem;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+h1 {
+  font-size: 2rem;
+  color: #42b883;
 }
 </style>
