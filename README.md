@@ -20,3 +20,6 @@ cd backend-express
 npm install
 node index.js
 Abre http://localhost:3000
+## Captura del proyecto funcionando
+
+![Hola Mundo funcionando](./Screenshot_1.jpg)
