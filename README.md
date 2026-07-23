@@ -23,3 +23,4 @@ Abre http://localhost:3000
 ## Captura del proyecto funcionando
 
 ![Hola Mundo funcionando](./Screenshot_1.jpg)
+![Backend Express funcionando](./NOMBRE-DEL-ARCHIVO.jpg)
